@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Narration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .btn-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .play-btn { background-color: #28a745; color: white; }
+        .play-btn:hover { background-color: #218838; }
+
+        .control-btns {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .pause-btn { background-color: #ffc107; color: black; }
+        .pause-btn:hover { background-color: #e0a800; }
+
+        .resume-btn { background-color: #17a2b8; color: white; }
+        .resume-btn:hover { background-color: #138496; }
+
+        .reset-btn { background-color: #dc3545; color: white; }
+        .reset-btn:hover { background-color: #c82333; }
+    </style>
+</head>
+<body>
+
+	<h2>SLT SonicJet</h2>
+    <h1>Select a Course</h1>
+
+    <div class="btn-container">
+        <button class="play-btn" onclick="speak('ecology')">Ecology</button>
+        <button class="play-btn" onclick="speak('genetics')">Genetics</button>
+        <button class="play-btn" onclick="speak('organic_chemistry')">Organic Chemistry</button>
+        <button class="play-btn" onclick="speak('biochem')">Biochemistry</button>
+        <button class="play-btn" onclick="speak('maintenance')">Maintenance</button>
+        <button class="play-btn" onclick="speak('glass_blowing')">Glass Blowing</button>
+        <button class="play-btn" onclick="speak('vacuum_techniques')">Vacuum Techniques</button>
+    </div>
+
+    <div class="control-btns">
+        <button class="pause-btn" onclick="pause()">Pause</button>
+        <button class="resume-btn" onclick="resume()">Resume</button>
+        <button class="reset-btn" onclick="reset()">Reset</button>
+    </div>
+
+    <script>
+const courses = {
+    ecology: `				ECOLOGY KEY POINTS
+1. Autecology
+•	Definition: Autecology focuses on studying the interactions between individual organisms (or a single species) and their environment. It is also referred to as the "ecology of individuals" or "individual species ecology."
+•	Explanation: This approach examines how environmental factors such as temperature, humidity, light, soil conditions, and other abiotic (non-living) factors influence the survival, reproduction, and behavior of a particular species. For instance, studying how a cactus survives in arid environments would fall under autecology.
+•	Key Features:
+o	Concentrates on a single species at a time.
+o	Investigates adaptations that allow a species to thrive in its environment.
+o	Explains the distribution and abundance of a species.
+•	Example: Research on how polar bears adapt to cold climates or how mangrove trees survive in saline environments.
+________________________________________
+2. Synecology
+•	Definition: Synecology is the study of groups of species or communities and their interactions with one another and their environment. It is often referred to as "community ecology."
+•	Explanation: Unlike autecology, which looks at one species, synecology examines the relationships within a community. A community is composed of different species living in the same area and interacting through various processes like competition, predation, and symbiosis.
+•	Key Features:
+o	Studies the dynamics of entire ecosystems or communities.
+o	Focuses on interactions among species (e.g., food chains, food webs, and competition).
+o	Explores how species coexist and form a balanced system.
+•	Example: Studying the interactions between grass, herbivores (like zebras), and carnivores (like lions) in a savanna ecosystem.
+________________________________________
+3. Population
+•	Definition: A population is a group of organisms of the same species that live in the same geographic area at the same time and are capable of interbreeding.
+•	Explanation: Populations form the building blocks of ecological studies. Scientists study populations to understand factors such as population size, density, growth rate, and distribution. These factors help explain how species survive, reproduce, and adapt over time.
+•	Key Features:
+o	All members belong to the same species.
+o	They interact with each other (e.g., mating, cooperation, or competition).
+o	Population size can change due to births, deaths, immigration, and emigration.
+•	Example: A population of penguins on an Antarctic island or a population of humans in a city.
+________________________________________
+4. Community
+•	Definition: A community is a group or population of different species that live and interact in the same area.
+•	Explanation: Communities represent the next level of ecological organization after populations. Within a community, species interact in various ways, such as mutualism (both benefit), parasitism (one benefits while the other is harmed), and commensalism (one benefits while the other is unaffected).
+•	Key Features:
+o	Consists of multiple populations of different species.
+o	Interactions shape the structure and function of the community.
+o	Communities vary in size, complexity, and biodiversity.
+•	Example: The organisms living in a forest, such as trees, birds, insects, fungi, and mammals, form a forest community.
+________________________________________
+5. Ecosystem
+•	Definition: An ecosystem is a community of living organisms (biotic factors) interacting with the non-living components (abiotic factors) of their environment in a particular area.
+•	Explanation: Ecosystems are broader than communities because they include both living and non-living components. The biotic factors (plants, animals, microorganisms) and abiotic factors (sunlight, water, soil, air) work together to form a functional unit. Ecosystems can be as small as a pond or as large as a rainforest or ocean.
+•	Key Features:
+o	Includes biotic (living) and abiotic (non-living) components.
+o	Energy flow and nutrient cycling are fundamental processes.
+o	Ecosystems can be natural (like a forest) or artificial (like an aquarium).
+•	Example: A coral reef, where fish, coral, algae, and other marine organisms interact with water currents, sunlight, and minerals in the ocean.
+________________________________________
+Comparison of the Concepts
+Concept	Focus	Level of Study	Example
+Autecology	Single species and its environment	Individual or species	Study of polar bear adaptations to the Arctic.
+Synecology	Groups of species and their interactions	Community	Interactions in a savanna ecosystem.
+Population	Organisms of the same species in one location	Population	A herd of elephants in a national park.
+Community	Different species in one area	Community	Forest organisms (birds, insects, plants).
+Ecosystem	Living and non-living components of an area	Ecosystem	Coral reef or rainforest ecosystem.
+________________________________________
+
+Factors that Influence the Size of Populations in an Ecosystem:
+The size of populations in an ecosystem is influenced by a combination of biotic and abiotic factors:
+1.	Biotic Factors:
+o	Predation: The presence of predators can reduce prey populations.
+o	Competition: Limited resources like food, water, and space can lead to competition, affecting population size.
+o	Disease: Outbreaks of diseases can decrease population numbers.
+o	Symbiosis: Mutualistic, parasitic, or commensal relationships can influence population dynamics.
+2.	Abiotic Factors:
+o	Climate: Temperature, rainfall, and humidity affect the survival and reproduction of species.
+o	Soil Quality: Nutrient availability in soil impacts plant populations, which in turn affects herbivores and predators.
+o	Water Availability: Essential for survival, especially in arid ecosystems.
+o	Natural Disasters: Events like floods, fires, or droughts can drastically reduce population sizes.
+3.	Reproductive Rate:
+o	Species with high reproductive rates can increase their population size rapidly, while those with low rates may struggle to maintain numbers.
+4.	Immigration and Emigration:
+o	Movement of individuals into (immigration) or out of (emigration) a population can alter its size.
+5.	Carrying Capacity:
+o	The maximum population size an ecosystem can support based on available resources. When a population exceeds this limit, it may decline due to resource scarcity.
+
+
+•	Simple sketch of vegetation belt of Nigeria
+
+ 
+
+
+Population Ecology:
+Population ecology is a branch of ecology that studies the dynamics of species populations and how these populations interact with their environment. It focuses on factors such as population size, density, distribution, age structure, and growth rates. Key concepts in population ecology include:
+•	Population Growth: Examines how populations increase or decrease over time, often modeled using exponential or logistic growth equations.
+•	Carrying Capacity: The maximum population size an environment can sustain.
+•	Birth and Death Rates: These determine population growth or decline.
+•	Immigration and Emigration: Movement of individuals into or out of a population.
+•	Population Regulation: Factors like predation, competition, and resource availability that control population size.
+Population ecology helps in understanding species survival, conservation, and management.
+________________________________________
+What is Sampling?
+Sampling is a method used in research and ecology to study a subset of individuals or data points from a larger population or area. Instead of examining the entire population, which may be impractical, a representative sample is collected to make inferences about the whole. Sampling is widely used in ecological studies to estimate population size, species diversity, or environmental conditions.
+________________________________________
+Representative Sampling:
+Representative sampling is a technique where the sample selected accurately reflects the characteristics of the entire population or study area. It ensures that the sample is unbiased and provides reliable data for analysis. Key aspects include:
+•	Randomization: Individuals or samples are chosen randomly to avoid bias.
+•	Stratification: Dividing the population into subgroups (strata) and sampling from each subgroup to ensure all segments are represented.
+•	Adequate Sample Size: The sample must be large enough to capture the variability within the population.
+Representative sampling is crucial for making valid conclusions in ecological studies.
+________________________________________
+Soil as an Ecosystem:
+Soil is a dynamic and complex ecosystem that supports life and plays a vital role in nutrient cycling, water filtration, and plant growth. It consists of both biotic (living) and abiotic (non-living) components:
+•	Biotic Components: Microorganisms (bacteria, fungi), insects, worms, and plant roots.
+•	Abiotic Components: Minerals, organic matter, water, and air.
+Soil ecosystems are essential for:
+•	Nutrient Cycling: Decomposition of organic matter releases nutrients like nitrogen and phosphorus.
+•	Water Regulation: Soil stores and filters water, influencing groundwater recharge and plant hydration.
+•	Habitat: Provides a habitat for numerous organisms, contributing to biodiversity.
+•	Plant Support: Anchors plants and supplies them with nutrients and water.
+Soil health is critical for sustainable agriculture and environmental balance.
+________________________________________
+Three Types of Weathering in Soil Formation:
+Weathering is the breakdown of rocks and minerals into smaller particles, which contributes to soil formation. The three main types of weathering are:
+1.	Physical (Mechanical) Weathering:
+o	Involves the physical breakdown of rocks without changing their chemical composition.
+o	Examples: Freeze-thaw cycles, temperature changes, and abrasion by wind or water.
+2.	Chemical Weathering:
+o	Involves chemical reactions that alter the composition of rocks and minerals.
+o	Examples: Oxidation, hydrolysis, and dissolution by acidic rainwater.
+3.	Biological Weathering:
+o	Caused by living organisms, such as plant roots growing into cracks in rocks or microorganisms producing acids that break down minerals.
+
+
+ 
+
+List 5 Importance of Soil Structure:
+1.	Water Infiltration and Retention: Good soil structure allows water to infiltrate and be stored, reducing runoff and erosion.
+2.	Root Penetration: Well-structured soil provides space for roots to grow and access nutrients and water.
+3.	Aeration: Proper soil structure ensures adequate air circulation, which is essential for root respiration and microbial activity.
+4.	Nutrient Availability: Soil structure influences the availability and cycling of nutrients for plant uptake.
+5.	Erosion Resistance: Stable soil structure reduces the risk of erosion by wind and water.
+________________________________________ 
+Definitions:
+i. Soil Profile:
+A soil profile is a vertical section of the soil that displays the different layers or horizons (e.g., topsoil, subsoil, parent material) and their characteristics, such as color, texture, and composition.
+ii. Soil Texture:
+Soil texture refers to the relative proportions of sand, silt, and clay particles in the soil. It influences water retention, drainage, and nutrient availability.
+________________________________________
+Calculation of Sand, Clay, and Silt Percentages:
+Given:
+•	40-second hydrometer reading = 25
+•	8-hour hydrometer reading = 8
+•	Soil sample weight = 50g
+Steps:
+1.	Sand % = 40-second reading - 8-hour reading
+Sand % = 25 - 8 = 17%
+2.	Clay % = 8-hour reading
+Clay % = 8%
+3.	Silt % = 100% - (Sand % + Clay %)
+Silt % = 100 - (17 + 8) = 75%
+Result:
+•	Sand = 17%
+•	Clay = 8%
+•	Silt = 75%
+________________________________________
+4 Factors Affecting Soil Formation:
+1.	Parent Material: The type of rock or material from which the soil forms.
+2.	Climate: Temperature and precipitation influence weathering and organic matter decomposition.
+3.	Topography: Slope and elevation affect water drainage and erosion.
+4.	Biological Activity: Plants, animals, and microorganisms contribute to organic matter and soil structure.
+________________________________________
+5 Ways Soil Loses Its Fertility:
+1.	Erosion: Loss of topsoil due to wind or water.
+2.	Nutrient Depletion: Continuous cropping without replenishing nutrients.
+3.	Soil Acidification: Excessive use of chemical fertilizers or acid rain.
+4.	Salinization: Accumulation of salts in the soil due to poor irrigation practices.
+5.	Deforestation: Removal of vegetation leads to loss of organic matter and soil structure.
+________________________________________
+Erosion and Its Processes:
+Erosion: The process by which soil and rock are removed from the Earth's surface by natural forces like wind, water, or ice.
+3 Processes Involved:
+1.	Detachment: Soil particles are loosened from the soil mass.
+2.	Transportation: Particles are carried away by wind, water, or ice.
+3.	Deposition: Particles are deposited in a new location.
+________________________________________
+5 Types of Water Erosion:
+1.	Sheet Erosion: Uniform removal of a thin layer of soil.
+2.	Rill Erosion: Small channels are formed by running water.
+3.	Gully Erosion: Large channels are carved by heavy water flow.
+4.	Splash Erosion: Raindrops dislodge soil particles.
+5.	Bank Erosion: Erosion of riverbanks by flowing water.
+________________________________________
+5 Elements Contributing to Wind Erosion:
+1.	Dry Soil: Lack of moisture makes soil particles easier to lift.
+2.	Bare Ground: Absence of vegetation exposes soil to wind.
+3.	Strong Winds: High wind speeds increase erosion potential.
+4.	Fine Soil Texture: Sandy or silty soils are more prone to wind erosion.
+5.	Flat Terrain: Lack of barriers allows wind to move freely.
+________________________________________
+5 Ways to Control Wind Erosion:
+1.	Plant Windbreaks: Trees or shrubs reduce wind speed.
+2.	Cover Crops: Vegetation protects soil from wind.
+3.	Mulching: Organic or inorganic mulch covers the soil surface.
+4.	Contour Plowing: Plowing across slopes reduces wind exposure.
+5.	Reduced Tillage: Minimizing soil disturbance maintains soil structure.
+________________________________________
+Differences Between Point Source and Non-Point Source Pollution:
+Point Source Pollution	Non-Point Source Pollution
+Comes from a single, identifiable source	Comes from diffuse, multiple sources
+Easier to monitor and control	Difficult to monitor and control
+Examples: Factory discharge, sewage pipes	Examples: Agricultural runoff, urban runoff
+Regulated under specific laws	Harder to regulate due to multiple sources
+Localized impact	Widespread impact
+________________________________________
+Production of Acid Rain:
+Acid rain is formed when sulfur dioxide (SO₂) and nitrogen oxides (NOₓ) are released into the atmosphere from burning fossil fuels, industrial processes, and vehicle emissions. These gases react with water, oxygen, and other chemicals to form sulfuric acid (H₂SO₄) and nitric acid (HNO₃), which fall to the ground as acid rain.
+________________________________________
+4 Effects of Noise Pollution:
+1.	Hearing Loss: Prolonged exposure to loud noise can damage hearing.
+2.	Stress and Anxiety: Noise pollution increases stress levels and affects mental health.
+3.	Sleep Disturbance: Loud noises disrupt sleep patterns.
+4.	Reduced Productivity: Noise can impair concentration and work efficiency.
+________________________________________
+5 Typical Occupational Health Risks:
+1.	Respiratory Issues: Exposure to dust, chemicals, or fumes.
+2.	Musculoskeletal Disorders: Repetitive strain or heavy lifting.
+3.	Hearing Loss: Prolonged exposure to loud machinery.
+4.	Skin Conditions: Contact with harmful substances.
+5.	Mental Stress: High-pressure work environments.
+
+
+Ecological Instruments:
+Ecological instruments are tools or devices used to measure, monitor, and analyze environmental and ecological parameters. They help scientists study ecosystems, species, and environmental changes. Below are 10 ecological instruments, their descriptions, and uses:
+1.	Thermometer:
+o	Description: Measures temperature.
+o	Use: Monitors air, water, or soil temperature in ecosystems.
+2.	Anemometer:
+o	Description: Measures wind speed.
+o	Use: Studies wind patterns and their effects on ecosystems.
+3.	Rain Gauge:
+o	Description: Measures precipitation.
+o	Use: Tracks rainfall for climate and hydrological studies.
+4.	pH Meter:
+o	Description: Measures acidity or alkalinity of soil or water.
+o	Use: Assesses soil or water quality for plant and aquatic life.
+5.	Hydrometer:
+o	Description: Measures soil texture by analyzing particle sedimentation.
+o	Use: Determines proportions of sand, silt, and clay in soil.
+6.	Light Meter:
+o	Description: Measures light intensity.
+o	Use: Studies light availability for photosynthesis in plants.
+7.	Dissolved Oxygen Meter:
+o	Description: Measures oxygen levels in water.
+o	Use: Assesses water quality for aquatic organisms.
+8.	Soil Moisture Sensor:
+o	Description: Measures water content in soil.
+o	Use: Monitors soil hydration for agricultural and ecological studies.
+9.	GPS (Global Positioning System):
+o	Description: Tracks location using satellites.
+o	Use: Maps ecosystems and tracks animal movements.
+10.	Camera Traps:
+o	Description: Motion-activated cameras.
+o	Use: Monitors wildlife behavior and population dynamics.
+________________________________________
+Discussions:
+(i) Population Ecology:
+Population ecology is the study of how populations of species interact with their environment. It focuses on factors like population size, density, distribution, growth rates, and the factors that influence these parameters, such as birth rates, death rates, immigration, and emigration. It helps in understanding species survival, conservation, and management.
+(ii) Population Size:
+Population size refers to the total number of individuals of a species in a specific area at a given time. It is influenced by factors like birth rates, death rates, immigration, emigration, and environmental conditions. Population size is critical for assessing species health and ecosystem balance.
+________________________________________
+Explanations:
+(i) Transect Sampling Technique:
+Transect sampling involves laying a straight line (transect) across a study area and recording observations at regular intervals. It is used to study species distribution, abundance, and environmental gradients. Types include line transects and belt transects.
+(ii) Mark and Recapture:
+This technique involves capturing a sample of individuals, marking them (e.g., tagging), releasing them, and then recapturing a second sample to estimate population size. The proportion of marked individuals in the second sample helps calculate the total population.
+________________________________________
+Soil Profile:
+A soil profile is a vertical section of the soil that shows its different layers or horizons (e.g., topsoil, subsoil, parent material) and their characteristics, such as texture, color, and composition.
+Two Broad Groups of Soil Organisms:
+1.	Microorganisms: Bacteria, fungi, algae, and protozoa.
+2.	Macroorganisms: Earthworms, insects, nematodes, and small mammals.
+Five Main Factors in Soil Formation:
+1.	Parent Material: The underlying geological material.
+2.	Climate: Temperature and precipitation.
+3.	Topography: Slope and elevation.
+4.	Biological Activity: Plants, animals, and microorganisms.
+5.	Time: Duration of soil formation processes.
+Physical Effects of Soil Macrofauna:
+1.	Aeration: Burrowing creates air channels.
+2.	Mixing: Enhances soil structure and nutrient distribution.
+3.	Decomposition: Breaks down organic matter.
+4.	Water Infiltration: Improves soil porosity.
+5.	Erosion Control: Stabilizes soil structure.
+________________________________________
+Categories of Activities of Soil Organisms:
+1.	Decomposition: Breaking down organic matter.
+2.	Nutrient Cycling: Recycling nutrients like nitrogen and phosphorus.
+Roles of Soil Organisms:
+1.	Decompose organic matter.
+2.	Improve soil structure.
+3.	Enhance nutrient availability.
+4.	Control pests and diseases.
+5.	Promote plant growth.
+Factors Affecting Water Holding Capacity of Soils:
+1.	Soil texture (clay holds more water than sand).
+2.	Organic matter content.
+3.	Soil structure.
+4.	Depth of soil.
+5.	Porosity and permeability.
+Ways Soil Loses Fertility:
+1.	Erosion.
+2.	Nutrient depletion.
+3.	Soil acidification.
+4.	Salinization.
+5.	Deforestation.
+________________________________________
+Types of Erosion:
+1.	Water erosion (sheet, rill, gully, splash, bank).
+2.	Wind erosion.
+3.	Glacial erosion.
+4.	Coastal erosion.
+5.	Soil erosion.
+Impacts of Gully Erosion in Nigeria:
+1.	Loss of arable land.
+2.	Destruction of infrastructure.
+3.	Reduced agricultural productivity.
+4.	Increased sedimentation in water bodies.
+5.	Displacement of communities.
+Controlling Wind Erosion:
+1.	Planting windbreaks.
+2.	Using cover crops.
+3.	Mulching.
+4.	Contour plowing.
+5.	Reducing tillage.
+________________________________________
+Pollution:
+(i) Pollution: The introduction of harmful substances or energy into the environment, causing adverse effects.
+(ii) Major Types of Pollution:
+1.	Air pollution.
+2.	Water pollution.
+3.	Soil pollution.
+4.	Noise pollution.
+5.	Light pollution.
+Primary vs. Secondary Pollutants:
+•	Primary Pollutants: Emitted directly into the environment (e.g., CO, SO₂).
+•	Secondary Pollutants: Formed when primary pollutants react in the environment (e.g., ozone, smog).
+Common Environmental Pollutants:
+1.	Carbon monoxide (CO).
+2.	Sulfur dioxide (SO₂).
+3.	Nitrogen oxides (NOₓ).
+4.	Particulate matter (PM).
+5.	Heavy metals (e.g., lead, mercury).
+Point-Source vs. Non-Point-Source Pollution:
+•	Point-Source Pollution: Comes from a single, identifiable source (e.g., factory discharge).
+•	Non-Point-Source Pollution: Comes from diffuse sources (e.g., agricultural runoff).
+
+`,
+
+    genetics: `Genetics is the study of genes, genetic variation, and heredity in living organisms. 
+               It explores DNA structure, gene expression, and inheritance patterns.`,
+
+    organic_chemistry: `Organic chemistry focuses on carbon-based compounds, studying their structure, 
+                        properties, and reactions. It is crucial in pharmaceuticals, plastics, and biochemistry.`,
+
+    biochem: `Biochemistry combines biology and chemistry to study the molecular processes within 
+              living organisms, including metabolism, enzyme functions, and DNA replication.`,
+
+    maintenance: `Maintenance involves the regular inspection, repair, and upkeep of equipment 
+                  and facilities to ensure safety and efficiency in various industries.`,
+
+    glass_blowing: `Glass blowing is the art of shaping molten glass using tools and air pressure. 
+                    It is used in both artistic and industrial applications.`,
+
+    vacuum_techniques: `Vacuum techniques involve creating and maintaining vacuum conditions 
+                        in scientific and industrial settings, crucial for semiconductor manufacturing 
+                        and laboratory research.`
+};
+
+let utteranceQueue = [];
+let currentUtterance = null;
+
+function speak(course) {
+    if (!courses[course]) {
+        alert("Course content not found!");
+        return;
+    }
+
+    // Stop any ongoing speech
+    window.speechSynthesis.cancel();
+    utteranceQueue = [];
+
+    // Split text into sentences and enqueue them
+    let sentences = courses[course].split(/(?<=[.!?])\s+/); // Splitting by punctuation marks
+    sentences.forEach(sentence => {
+        let utterance = new SpeechSynthesisUtterance(sentence);
+        utterance.rate = 1;
+        utterance.pitch = 1;
+        utterance.volume = 1;
+
+        // On finish, play the next utterance in the queue
+        utterance.onend = function () {
+            if (utteranceQueue.length > 0) {
+                currentUtterance = utteranceQueue.shift();
+                window.speechSynthesis.speak(currentUtterance);
+            }
+        };
+
+        utteranceQueue.push(utterance);
+    });
+
+    // Start the first utterance
+    if (utteranceQueue.length > 0) {
+        currentUtterance = utteranceQueue.shift();
+        window.speechSynthesis.speak(currentUtterance);
+    }
+}
+
+function pause() {
+    if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+        window.speechSynthesis.pause();
+    }
+}
+
+function resume() {
+    if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+    }
+}
+
+function reset() {
+    window.speechSynthesis.cancel(); // Stops and resets the speech
+    utteranceQueue = []; // Clear queued sentences
+}
+
+</script>
+
+</body>
+</html>
